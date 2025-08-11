@@ -1,0 +1,124 @@
+app_id: f1d61f92850840688c4cc24088eece68
+name: ChromeOS Device Actions
+description: A Foundry app for managing and securing ChromeOS devices through the Google Admin API
+logo: https://assets.falcon.us-2.crowdstrike.com/apps/f1d61f92850840688c4cc24088eece68/falconlogo.png
+vendor: CrowdStrike
+vendor_products:
+    - Falcon Insight for ChromeOS
+use_case: Endpoint security
+manifest_version: "2023-05-09"
+ignored:
+    - .+/node_modules$
+    - .+/node_modules/.+
+    - .+/venv$
+    - .+/venv/.+
+ui:
+    homepage: ""
+    extensions:
+        - id: bf77a2c69da74a02a05bde0d6e14ee6b
+          name: ChromeOS Response Actions
+          description: Manages ChromeOS devices within your Google Workspace organization.
+          path: ui/extensions/ChromeOS/src
+          entrypoint: ui/extensions/ChromeOS/src/index.html
+          sockets:
+            - activity.detections.details
+            - hosts.host.panel
+          content_security_policy:
+            connect-src: []
+            style-src: []
+            style-src-elem: []
+            script-src: []
+            form-action: []
+            img-src: []
+            media-src: []
+            object-src: []
+          permissions:
+            - disable-chromeos-device
+          is_ui_builder: false
+    pages: {}
+    dashboards: {}
+    navigation: {}
+api_integrations:
+    - id: addabf03e7c94b83a8db326b3e1abdaa
+      name: chromeos-api
+      description: ""
+      path: api-integrations/ChromeOS_API.json
+rtr_scripts: []
+collections: []
+auth:
+    scopes: []
+    permissions:
+        disable-chromeos-device:
+            id: 2085697077984ed7aa687b416ab063f8
+            name: Disable ChromeOS Device
+            description: Enable and disable ChromeOS device using the ChromeOS Device Actions UI extension.
+    roles:
+        - id: 51085d0947e84c04bb7cb34f1fa7b64b
+          name: ChromeOS Security Admin
+          description: Enable and disable ChromeOS device using the ChromeOS Device Actions UI extension.
+          permissions:
+            - disable-chromeos-device
+functions:
+    - id: 779d112ecd2a4ca5bd3ddbfa72dbd2bc
+      name: chromeos-actions
+      config: null
+      description: Manage and control ChromeOS devices including organizational unit placement and device status
+      path: functions/chromeos-actions
+      environment_variables: {}
+      handlers:
+        - name: Move ChromeOS Device to Organizational Unit
+          description: Move a ChromeOS device to a specified Organizational Unit (OU)
+          method: POST
+          api_path: /move_chromeos_device
+          payload_type: ""
+          request_schema: schemas/move_chromeos_device_request_schema.json
+          response_schema: schemas/move_chromeos_device_response_schema.json
+          workflow_integration:
+            id: 4b44f77225b84b1dbe1c923a645fdf2d
+            disruptive: false
+            system_action: false
+            tags:
+                - Move ChromeOS Device
+                - Foundry ChromeOS Action
+                - ChromeOS
+                - ChromeOS FaaS
+          permissions: []
+        - name: Change ChromeOS Device Status
+          description: Enable (provisioned) or disable a ChromeOS device to control access and functionality
+          method: POST
+          api_path: /change_device_status
+          payload_type: ""
+          request_schema: schemas/change_device_status_request_schema.json
+          response_schema: schemas/change_device_status_response_schema.json
+          workflow_integration:
+            id: fc0de3ef76b445008c8344c8dd6d5a01
+            disruptive: false
+            system_action: false
+            tags:
+                - Change Device Status
+                - Foundry ChromeOS Action
+                - ChromeOS
+                - ChromeOS FaaS
+          permissions: []
+      language: python
+workflows: []
+parsers: []
+logscale:
+    saved_searches: []
+lookup_files: []
+docs:
+    id: 32a7b7956f8040d28b0f825562f05fc2
+    path: app_docs
+    entrypoint: README.md
+    links:
+        - appcatalog.png
+        - chromeos.png
+        - configuration.png
+        - installapp.png
+        - permissions.png
+        - roles.png
+        - uiextension.png
+        - wf1condition.png
+        - wf1main.png
+        - wf1movedevice.png
+        - wf1status.png
