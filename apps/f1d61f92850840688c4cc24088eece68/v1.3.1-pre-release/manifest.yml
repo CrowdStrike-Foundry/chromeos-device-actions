@@ -112,10 +112,13 @@ docs:
     entrypoint: README.md
     links:
         - appcatalog.png
+        - appcatalog1024.png
         - chromeos.png
         - configuration.png
+        - configuration1024.png
         - installapp.png
         - permissions.png
+        - permissions1024.png
         - roles.png
         - uiextension.png
         - wf1condition.png
