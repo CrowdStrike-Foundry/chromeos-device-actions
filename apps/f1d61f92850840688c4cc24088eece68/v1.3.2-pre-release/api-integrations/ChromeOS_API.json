@@ -15,89 +15,13 @@
         },
         "type": "oauth2"
       }
-    },
-    "schemas": {
-      "$config": {
-        "properties": {
-          "auth": {
-            "properties": {
-              "service_account": {
-                "title": "Google service account json key",
-                "x-cs-ui": {
-                  "component": "workflow-extension-file-upload",
-                  "encoding": "base64",
-                  "accept": [
-                    ".yaml",
-                    ".json"
-                  ]
-                },
-                "properties": {
-                  "contents": {
-                    "type": "string",
-                    "format": "password"
-                  },
-                  "file_name": {
-                    "type": "string"
-                  }
-                }
-              },
-              "subject": {
-                "title": "Google subject email to impersonate (optional)",
-                "type": "string"
-              }
-            },
-            "required": [
-              "service_account"
-            ],
-            "type": "object"
-          },
-          "name": {
-            "maxLength": 100,
-            "minLength": 1,
-            "type": "string",
-            "title": "Name"
-          },
-          "params": {
-            "properties": {
-              "path": {
-                "properties": {
-                  "customerId": {
-                    "type": "string",
-                    "title": "Customer ID",
-                    "description": "The unique ID for your Google Workspace account"
-                  }
-                },
-                "required": [
-                  "customerId"
-                ],
-                "type": "object"
-              }
-            },
-            "type": "object",
-            "required": [
-              "path"
-            ]
-          }
-        },
-        "required": [
-          "name",
-          "auth",
-          "params"
-        ],
-        "type": "object",
-        "title": "ChromeOS workspace admin",
-        "x-cs-order": [
-          "name",
-          "auth",
-          "params"
-        ]
-      }
     }
   },
   "info": {
     "contact": {
-      "email": "cloud-integrations@crowdstrike.com"
+      "email": "carlos.matos@crowdstrike.com"
     },
+    "description": "ChromeOS admin profile",
     "title": "chromeos-api",
     "version": ""
   },
@@ -110,7 +34,6 @@
           {
             "in": "path",
             "name": "customerId",
-            "required": false,
             "schema": {
               "title": "Customer ID",
               "type": "string"
@@ -151,7 +74,6 @@
         "x-cs-operation-config": {
           "workflow": {
             "description": "ChromeOS - Move Device to OU",
-            "expose_to_workflow": false,
             "name": "ChromeOS - Move Device to OU",
             "system": false
           }
@@ -165,7 +87,6 @@
           {
             "in": "path",
             "name": "customerId",
-            "required": false,
             "schema": {
               "title": "Customer ID",
               "type": "string"
@@ -513,7 +434,6 @@
         "x-cs-operation-config": {
           "workflow": {
             "description": "ChromeOS - Get Device Info",
-            "expose_to_workflow": false,
             "name": "ChromeOS - Get Device Info",
             "system": false
           }
@@ -527,7 +447,6 @@
           {
             "in": "path",
             "name": "customerId",
-            "required": false,
             "schema": {
               "title": "Customer ID",
               "type": "string"
@@ -599,7 +518,6 @@
         "x-cs-operation-config": {
           "workflow": {
             "description": "ChromeOS - Change Device Status",
-            "expose_to_workflow": false,
             "name": "ChromeOS - Change Device Status",
             "system": false
           }
@@ -613,7 +531,6 @@
           {
             "in": "path",
             "name": "customerId",
-            "required": false,
             "schema": {
               "title": "Customer ID",
               "type": "string"
@@ -624,23 +541,21 @@
             "name": "orgUnitPath",
             "schema": {
               "title": "Organizational Unit Path",
-              "type": "string",
-              "description": "Full path of the organizational unit or its ID"
+              "type": "string"
             }
           },
           {
             "in": "query",
             "name": "type",
             "schema": {
-              "title": "Type",
-              "type": "string",
+              "default": "allIncludingParent",
               "enum": [
                 "all",
                 "children",
                 "allIncludingParent"
               ],
-              "default": "allIncludingParent",
-              "description": "Whether to return all sub-organizations or just immediate children"
+              "title": "Type",
+              "type": "string"
             }
           }
         ],
@@ -650,29 +565,31 @@
               "application/json": {
                 "schema": {
                   "properties": {
-                    "kind": {
-                      "title": "Kind",
-                      "type": "string"
-                    },
                     "etag": {
                       "title": "ETag",
                       "type": "string"
                     },
+                    "kind": {
+                      "title": "Kind",
+                      "type": "string"
+                    },
                     "organizationUnits": {
-                      "type": "array",
                       "items": {
-                        "type": "object",
                         "properties": {
+                          "blockInheritance": {
+                            "title": "Block Inheritance",
+                            "type": "boolean"
+                          },
+                          "description": {
+                            "title": "Description",
+                            "type": "string"
+                          },
                           "kind": {
                             "title": "Kind",
                             "type": "string"
                           },
                           "name": {
                             "title": "Name",
-                            "type": "string"
-                          },
-                          "description": {
-                            "title": "Description",
                             "type": "string"
                           },
                           "orgUnitId": {
@@ -690,15 +607,13 @@
                           "parentOrgUnitPath": {
                             "title": "Parent Organizational Unit Path",
                             "type": "string"
-                          },
-                          "blockInheritance": {
-                            "title": "Block Inheritance",
-                            "type": "boolean"
                           }
                         },
-                        "title": "OrganizationUnit"
+                        "title": "OrganizationUnit",
+                        "type": "object"
                       },
-                      "title": "OrganizationUnits"
+                      "title": "OrganizationUnits",
+                      "type": "array"
                     }
                   },
                   "title": "OrganizationUnits",
@@ -711,7 +626,6 @@
         "x-cs-operation-config": {
           "workflow": {
             "description": "ChromeOS - List Organizational Units",
-            "expose_to_workflow": false,
             "name": "ChromeOS - List Organizational Units",
             "system": false
           }
