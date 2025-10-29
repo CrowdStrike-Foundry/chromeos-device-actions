@@ -19,7 +19,7 @@ def move_chromeos_device(
     request: Request, config: [dict[str, any], None], logger: Logger # type: ignore
 ) -> Response:
     logger.info("Processing request to move ChromeOS device")
-    # Extract parameters from request body
+    # Extract parameters from request body.
     device_id = request.body.get("device_id")
     ou_path = request.body.get("ou_path")
 
