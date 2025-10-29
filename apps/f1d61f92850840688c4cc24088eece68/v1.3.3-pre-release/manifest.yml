@@ -62,12 +62,12 @@ functions:
     - id: 779d112ecd2a4ca5bd3ddbfa72dbd2bc
       name: chromeos-actions
       config: null
-      description: Manage and control ChromeOS devices including organizational unit placement and device status
+      description: Manage and control ChromeOS devices including organizational unit placement and device status.
       path: functions/chromeos-actions
       environment_variables: {}
       handlers:
         - name: Move ChromeOS Device to Organizational Unit
-          description: Move a ChromeOS device to a specified Organizational Unit (OU)
+          description: Move a ChromeOS device to a specified Organizational Unit (OU).
           method: POST
           api_path: /move_chromeos_device
           payload_type: ""
@@ -84,7 +84,7 @@ functions:
                 - ChromeOS FaaS
           permissions: []
         - name: Change ChromeOS Device Status
-          description: Enable (provisioned) or disable a ChromeOS device to control access and functionality
+          description: Enable (provisioned) or disable a ChromeOS device to control access and functionality.
           method: POST
           api_path: /change_device_status
           payload_type: ""
@@ -111,13 +111,9 @@ docs:
     path: app_docs
     entrypoint: README.md
     links:
-        - appcatalog.png
         - appcatalog1024.png
         - chromeos.png
-        - configuration.png
         - configuration1024.png
-        - installapp.png
-        - permissions.png
         - permissions1024.png
         - roles.png
         - uiextension.png

@@ -9,9 +9,21 @@ The current implementation allows users to contain, disable, and re-enable Chrom
 
 ![Image](chromeos.png)
 
+## Prerequisites
+
+Before using this Foundry App, ensure you have the following:
+
+**Required Subscription:**
+- Falcon Insight for ChromeOS (a Falcon Insight XDR add-on) subscription
+
+**Required Configuration:**
+- Falcon Insight for ChromeOS data connector must be configured and operational
+
+**Note:** Without these prerequisites, the app will not function properly as it depends on ChromeOS telemetry data provided through the Falcon Insight for ChromeOS service.
+
 ## Installation
 
-The application can be installed through Foundry's app import functionality. You'll need appropriate permissions in your Foundry environment, as well as the appropriate GCP service account credentials to import and install the application.
+The application can be installed through Foundry's App catalog. You'll need appropriate permissions in your Foundry environment, as well as the appropriate GCP service account credentials to import and install the application.
 
 ### Requirements
 
@@ -46,19 +58,15 @@ The application can be installed through Foundry's app import functionality. You
 
 ### Install the app
 
-To install the Foundry app and make it available to your CID:
-
-1. In the **App overview** page, select **View in app catalog** to navigate to the app catalog for the Chrome Device Actions app
-![Image](appcatalog.png)
-1. Click **Install now** to start the installation process
-![Image](installapp.png)
+1. In the **App catalog** page, select **Install** on the **ChromeOS Device Actions** application
+![Image](appcatalog1024.png)
 1. The application permissions will be displayed. Review them and click **Save and install** to complete the installation
-![Image](permissions.png)
+![Image](permissions1024.png)
 1. Fill our your Google Service Account information
    1. Enter a name for your service account credentials
    1. Upload your service account JSON key file
    1. Enter your Google Workspace customer ID
-![Image](configuration.png)
+![Image](configuration1024.png)
 1. Click **Install app** to complete the installation
 
 ## UI Extension
