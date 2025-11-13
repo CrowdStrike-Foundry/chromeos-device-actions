@@ -41,7 +41,7 @@ ui:
 api_integrations:
     - id: addabf03e7c94b83a8db326b3e1abdaa
       name: chromeos-api
-      description: ""
+      description: ChromeOS API Integrations
       path: api-integrations/ChromeOS_API.json
 rtr_scripts: []
 collections: []
@@ -107,7 +107,7 @@ logscale:
     saved_searches: []
 lookup_files: []
 docs:
-    id: 32a7b7956f8040d28b0f825562f05fc2
+    id: 9e2126b810634f3098137ffe5f688b63
     path: app_docs
     entrypoint: README.md
     links:
