@@ -14,9 +14,11 @@ The current implementation allows users to contain, disable, and re-enable Chrom
 Before using this Foundry App, ensure you have the following:
 
 **Required Subscription:**
+
 - Falcon Insight for ChromeOS (a Falcon Insight XDR add-on) subscription
 
 **Required Configuration:**
+
 - Falcon Insight for ChromeOS data connector must be configured and operational
 
 **Note:** Without these prerequisites, the app will not function properly as it depends on ChromeOS telemetry data provided through the Falcon Insight for ChromeOS service.
@@ -51,8 +53,8 @@ The application can be installed through Foundry's App catalog. You'll need appr
     >
     > Examples:
     >
-    >   - /MyParent/ChromeOS_Quarantine
-    >   - id:01234567890
+    > - /MyParent/ChromeOS_Quarantine
+    > - id:01234567890
 - **Google Admin Customer ID**
   - You can find this in [account settings](https://admin.google.com/u/3/ac/accountsettings)
 
